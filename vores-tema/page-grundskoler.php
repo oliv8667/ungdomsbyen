@@ -11,6 +11,10 @@
 
 ?>
 
+<head>
+<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/custom.css">
+</head>
+
 <template>
       <article>
         <img src="" alt="" />
