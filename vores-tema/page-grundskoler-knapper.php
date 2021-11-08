@@ -15,6 +15,13 @@ get_header();
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/custom.css">
 </head>
 
+<nav>
+      <button data-kategorier="alle" class="valgt">Alle</button>
+      <button data-kategorier="økonomi">Økonomi</button>
+      <button data-kategorier="verdensmal">FN’s 17 verdensmål</button>
+      <button data-kategorier="demokrati">Demokrati og medborgerskab</button>
+      <button data-kategorier="konflikthandtering">Konflikthandtering</button>
+    </nav>
 
 <template>
       <article>
@@ -37,7 +44,27 @@ get_header();
         <script>
 
         let kurser;
+        let filter = "alle";
 		const url = "https://oliviabang.dk/kea/09_CMS/ungdomsbyen/wordpress/wp-json/wp/v2/kursus?per_page=100";
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+        const filterKnapper = document.querySelectorAll("nav button");
+        filterKnapper.forEach((knap) =>
+            knap.addEventListener("click", filtrerKurser)
+        );
+        container = document.querySelector(".kursuscontainer");
+        temp = document.querySelector("template");
+        console.log(temp);
+        getJson();
+        }
+
+        function filtrerKurser() {
+        filter = this.dataset.kategorier;
+
+        visKurser();
+      }
 
 
 		async function getJson() {
@@ -48,9 +75,9 @@ get_header();
 		}
 
         function visKurser() {
-            let temp = document.querySelector("template");
-            let container = document.querySelector(".kursuscontainer");
+            container.textContent = "";
             kurser.forEach(kursus =>  {
+            if (filter == kursus.kategorier || filter == "alle") {
             let klon = temp.cloneNode(true).content;
             klon.querySelector("h2").textContent = kursus.title.rendered;
             klon.querySelector("img").src = kursus.billede.guid;
@@ -59,6 +86,7 @@ get_header();
             klon.querySelector(".aergang").textContent = kursus.argang;
             klon.querySelector("article").addEventListener("click", () => {location.href = kursus.link;})
             container.appendChild(klon);
+                 }
             })
         }
 
