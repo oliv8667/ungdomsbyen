@@ -1,41 +1,52 @@
 <?php
 /**
- * The template for displaying all single posts
+ * The template for displaying all pages.
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ * This is the template that displays all pages by default.
+ * Please note that this is the WordPress construct of pages and that other
+ * 'pages' on your WordPress site will use a different template.
  *
- * @package WordPress
- * @subpackage Twenty_Nineteen
- * @since Twenty Nineteen 1.0
+ * @package OceanWP WordPress theme
  */
 get_header();
 ?>
 
-<head>
-<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri() ?>/custom.css">
-</head>
-
     <section id="primary" class="content-area">
     <main id="main" class="site-main">
 
+    <?php
+				// Elementor `single` location.
+				if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'single' ) ) {
+
+					// Start loop.
+					while ( have_posts() ) :
+						the_post();
+
+						get_template_part( 'partials/page/layout' );
+
+					endwhile;
+
+				}
+				?>
+
     <nav id="argang-filtrering"><button class="filter valgt" data-argang="alle">Alle</button></nav>
     <nav id="kategori-filtrering"><button class="filter valgt" data-cat="alle">Alle</button></nav>
-        <h1 id="temaer">Temaer for kurser</h1>
+    
         <section id="kursus-oversigt"></section>
+       
     </main>
 
-
     <template>
-      <article>
+      <article id="artikel">
         <img src="" alt="" />
         <div>
         <h2></h2>
         <p class="fag"></p>
         <p class="beskrivelse"></p>
         </div>
+        <button class="kursusknap">Læs mere</button>
         </article>
     </template>
-
 
         <script>
 
@@ -78,6 +89,7 @@ get_header();
             
             categories.forEach(cat=>{
                //console.log(cat.id);
+
                 if(cat.name != "Uncategorized"){
                 document.querySelector("#kategori-filtrering").innerHTML += `<button class="filter" data-cat="${cat.id}">${cat.name}</button>`
                 }
@@ -85,7 +97,6 @@ get_header();
                 argang.forEach(argang=>{
                //console.log(argang.id);
                 document.querySelector("#argang-filtrering").innerHTML += `<button class="filter" data-argang="${argang.id}">${argang.name}</button>`
-             
             })
             addEventListenersToButtons();
         }
@@ -103,10 +114,13 @@ get_header();
                     klon.querySelector("img").src = kursus.billede.guid;
                     klon.querySelector(".fag").textContent = kursus.fag;
                     klon.querySelector(".beskrivelse").textContent = kursus.beskrivelse;
+                    klon.querySelector(".kursusknap").textContent = kursus.knap;
                     klon.querySelector("article").addEventListener("click", () => {
                         location.href = kursus.link;
                     })
                     liste.appendChild(klon);
+                } else{
+                    console.log("der er ingen kurser");
                 }
             })
 
@@ -121,23 +135,19 @@ get_header();
             })
         }
 
-        function filtreringKategori() {
+      function filtreringKategori() {
             filterKursus = this.dataset.cat;
-            document.querySelector("h1").textContent = this.textContent;
             //fjern .valgt fra alle
             document.querySelectorAll("#kategori-filtrering .filter").forEach(elm => {
                 elm.classList.remove("valgt");
             });
-          
             //tilføj .valgt til den valgte
             this.classList.add("valgt");
             visKurser();
         }
 
-      
         function filtreringArgang() {
             filterArgang = this.dataset.argang;
-            document.querySelector("h1").textContent = this.textContent;
              //fjern .valgt fra alle
             document.querySelectorAll("#argang-filtrering .filter").forEach(elm => {
                 elm.classList.remove("valgt");

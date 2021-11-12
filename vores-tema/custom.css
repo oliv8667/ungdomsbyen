@@ -1,22 +1,83 @@
-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 5px;
+/*********** MOBILE **********/
+
+.content-area {
+  padding-right: 0px;
 }
 
-article {
-  background-color: beige;
-  border: solid black 1px;
-  border-radius: 5px;
-  padding: 1rem;
-  margin: 1rem;
+.attachment-full size-full {
+  margin-inline: 0px;
+}
+
+.test {
+  margin-inline: 190px;
+}
+
+#kursus-oversigt {
+  margin-inline: 2rem;
+}
+
+#artikel {
+  margin-top: 3rem;
 }
 
 h2 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
-article p {
+article .beskrivelse {
   font-size: 12px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+}
+
+@media (min-width: 700px) {
+  #kursus-oversigt {
+    display: flex;
+    flex-wrap: wrap;
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+    gap: 10px;
+    margin-bottom: 10rem;
+    background-color: rgba(255, 255, 255, 0.514);
+    border-radius: 5px;
+  }
+
+  #artikel {
+    min-width: 320px;
+    max-width: 320px;
+    background-color: white;
+    border: solid rgb(102, 96, 96) 1px;
+    /* border-radius: 10px; */
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  h2 {
+    font-family: "Montserrat", sans-serif;
+  }
+
+  article .beskrivelse {
+    font-size: 13px;
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+  }
+
+  #argang-filtrering,
+  #kategori-filtrering {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .kursusknap,
+  .filter {
+    background-color: #f25c27;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    padding-inline: 10px;
+    padding-block: 5px;
+  }
 }
