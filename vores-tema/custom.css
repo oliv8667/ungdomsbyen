@@ -1,4 +1,85 @@
+/****************** DROP DOWN PÅ "TIL GRUNDSKOLER" ***********************/
+
+/* Dropdown Button */
+.dropbtn,
+.dropbtn-argang {
+  background-color: #083b5a;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 5px;
+  padding-inline: 20px;
+  padding-block: 10px;
+  font-size: 16px;
+  border: none;
+  margin-bottom: 2.5rem;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown,
+.dropbtn-argang {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn-argang {
+  margin-left: 3.2rem;
+  margin-right: 2rem;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+#argang-filtrering {
+  margin-left: 3.2rem;
+}
+
+/* Links inside the dropdown */
+.dropdown-content div {
+  color: black;
+  font-family: "Montserrat", sans-serif;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content div:hover {
+  background-color: #083b5a;
+  color: white;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: black;
+}
+
+.dropdown:hover .dropbtn-argang {
+  background-color: black;
+}
+
+/********************************* SLUT *************************************/
+
 /*********** MOBILE **********/
+
+.titel,
+.titel_single {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  color: #083b5a;
+}
 
 .content-area {
   padding-right: 0px;
@@ -20,17 +101,34 @@
   margin-top: 3rem;
 }
 
-h2 {
+article .beskrivelse,
+.langbeskrivelse_single {
+  font-size: 14px;
   font-family: "Montserrat", sans-serif;
-}
-
-article .beskrivelse {
-  font-size: 12px;
-  font-family: "Montserrat", sans-serif;
+  color: black;
   font-style: normal;
 }
 
+/************* MOBILE SINGLE ***********/
+
+.fag_single {
+  font-style: italic;
+  font-family: "Montserrat", sans-serif;
+}
+
+.pris_single {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+
 @media (min-width: 700px) {
+  /* boks på "til grundskoler"*/
+  .elementor-237
+    .elementor-element.elementor-element-6fce2beb
+    > .elementor-container {
+    max-width: 1200px;
+  }
+
   #kursus-oversigt {
     display: flex;
     flex-wrap: wrap;
@@ -38,8 +136,8 @@ article .beskrivelse {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
     gap: 10px;
     margin-bottom: 10rem;
-    background-color: rgba(255, 255, 255, 0.514);
-    border-radius: 5px;
+    /* background-color: rgba(255, 255, 255, 0.514); */
+    /* border-radius: 5px; */
   }
 
   #artikel {
@@ -47,31 +145,20 @@ article .beskrivelse {
     max-width: 320px;
     background-color: white;
     border: solid rgb(102, 96, 96) 1px;
-    /* border-radius: 10px; */
+    border-radius: 10px;
     padding: 1rem;
     margin: 1rem;
   }
 
-  h2 {
-    font-family: "Montserrat", sans-serif;
-  }
-
-  article .beskrivelse {
-    font-size: 13px;
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-  }
-
-  #argang-filtrering,
-  #kategori-filtrering {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  /* luft mellem overskrift og billede*/
+  .titel {
+    margin-top: 1rem;
   }
 
   .kursusknap,
-  .filter {
-    background-color: #f25c27;
+  .tilbageknap_single,
+  .bookknap_single {
+    background-color: #083b5a;
     font-family: "Montserrat", sans-serif;
     color: white;
     border: none;
@@ -79,5 +166,62 @@ article .beskrivelse {
     text-align: center;
     padding-inline: 10px;
     padding-block: 5px;
+  }
+
+  /********* SINGLE VIEW ***********/
+  .tilbageknap_single {
+    margin-top: 4rem;
+    margin-left: 124.5rem;
+  }
+
+  .bookknap_single {
+    margin-bottom: 3rem;
+  }
+
+  #artikel_single {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-width: 1200px;
+    max-width: 1200px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem;
+    margin-top: 1.5rem;
+    margin-inline: auto;
+    margin-bottom: 7rem;
+  }
+
+  .pic_single {
+    grid-column: 2/3;
+    margin-right: 2rem;
+    margin-top: 3rem;
+    padding-right: 2rem;
+  }
+
+  .titel_single {
+    margin-top: 3rem;
+  }
+
+  .titel_single,
+  .pris_single,
+  .fag_single,
+  .langbeskrivelse_single,
+  .bookknap_single {
+    grid-column: 1/2;
+    margin-left: 2rem;
+  }
+
+  .pic_single,
+  .titel_single,
+  .pris_single,
+  .fag_single,
+  .langbeskrivelse_single,
+  .bookknap_single {
+    grid-row: 1/2;
+  }
+
+  .langbeskrivelse_single {
+    margin-right: 2rem;
   }
 }

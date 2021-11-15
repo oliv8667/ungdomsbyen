@@ -21,14 +21,17 @@ get_header();
 	    <section id="primary" class="content-area">
 		<main id="main" class="site-main">
 
-        <button>Tilbage</button>
+        <button class="tilbageknap_single">Tilbage</button>
 
-        <article id="artikel">
-        <img class="pic" src="" alt="" />
+        <article id="artikel_single">
+        <img class="pic_single" src="" alt="" />
         <div>
-        <h2></h2>
-        <p class="beskrivelse"></p>
-        <p class="fag"></p>
+        <h2 class="titel_single"></h2>
+        <p class="langbeskrivelse_single"></p>
+        <p class="fag_single"></p>
+        <p class="pris_single"></p>
+        <button class="bookknap_single">Book kursus</button>
+
         </div>
         </article>
 
@@ -49,15 +52,16 @@ get_header();
 		}
 
         function visKursus() {
-            document.querySelector("h2").textContent = kursus.title.rendered;
-            document.querySelector(".pic").src = kursus.billede.guid;
-            document.querySelector(".beskrivelse").textContent = kursus.beskrivelse;
-            document.querySelector(".fag").textContent = kursus.fag;
+            document.querySelector(".titel_single").textContent = kursus.title.rendered;
+            document.querySelector(".pic_single").src = kursus.billede.guid;
+            document.querySelector(".langbeskrivelse_single").textContent = kursus.langbeskrivelse;
+            document.querySelector(".fag_single").textContent = "📚" + " " + kursus.fag;
+            document.querySelector(".pris_single").textContent = "💰" +  " " + "Prisen for kurset er" + " " + kursus.pris + "kr";
         }
 
-        getJson ();
+        getJson();
 
-        document.querySelector("button").addEventListener("click", () => {
+        document.querySelector(".tilbageknap_single").addEventListener("click", () => {
         window.history.back();
       });
 

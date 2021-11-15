@@ -29,9 +29,15 @@ get_header();
 				}
 				?>
 
-    <nav id="argang-filtrering"><button class="filter valgt" data-argang="alle">Alle</button></nav>
-    <nav id="kategori-filtrering"><button class="filter valgt" data-cat="alle">Alle</button></nav>
-    
+<div class="dropdown">
+  <button class="dropbtn-argang">Årgang ↓</button>
+    <nav class="dropdown-content" id="argang-filtrering"><div class="filter valgt" data-argang="alle">Alle</div></nav>
+    </div>
+
+    <div class="dropdown">
+  <button class="dropbtn">Tema ↓</button>
+    <nav class="dropdown-content" id="kategori-filtrering"><div class="filter valgt" data-cat="alle">Alle</div></nav>
+    </div>
         <section id="kursus-oversigt"></section>
        
     </main>
@@ -40,8 +46,7 @@ get_header();
       <article id="artikel">
         <img src="" alt="" />
         <div>
-        <h2></h2>
-        <p class="fag"></p>
+        <h2 class="titel"></h2>
         <p class="beskrivelse"></p>
         </div>
         <button class="kursusknap">Læs mere</button>
@@ -91,12 +96,12 @@ get_header();
                //console.log(cat.id);
 
                 if(cat.name != "Uncategorized"){
-                document.querySelector("#kategori-filtrering").innerHTML += `<button class="filter" data-cat="${cat.id}">${cat.name}</button>`
+                document.querySelector("#kategori-filtrering").innerHTML += `<div class="filter" data-cat="${cat.id}">${cat.name}</div>`
                 }
             })
                 argang.forEach(argang=>{
                //console.log(argang.id);
-                document.querySelector("#argang-filtrering").innerHTML += `<button class="filter" data-argang="${argang.id}">${argang.name}</button>`
+                document.querySelector("#argang-filtrering").innerHTML += `<div class="filter" data-argang="${argang.id}">${argang.name}</div>`
             })
             addEventListenersToButtons();
         }
@@ -110,9 +115,8 @@ get_header();
                 //tjek filterKursus og filterArgang til filtrering
                 if ((filterKursus == "alle"  || kursus.categories.includes(parseInt(filterKursus))) && (filterArgang == "alle"  || kursus.argang.includes(parseInt(filterArgang)))) {
                     const klon = skabelon.cloneNode(true).content;
-                    klon.querySelector("h2").textContent = kursus.title.rendered;
+                    klon.querySelector(".titel").textContent = kursus.title.rendered;
                     klon.querySelector("img").src = kursus.billede.guid;
-                    klon.querySelector(".fag").textContent = kursus.fag;
                     klon.querySelector(".beskrivelse").textContent = kursus.beskrivelse;
                     klon.querySelector(".kursusknap").textContent = kursus.knap;
                     klon.querySelector("article").addEventListener("click", () => {
@@ -127,10 +131,10 @@ get_header();
         }
 
         function addEventListenersToButtons() {
-            document.querySelectorAll("#kategori-filtrering button").forEach(elm => {
+            document.querySelectorAll("#kategori-filtrering div").forEach(elm => {
                 elm.addEventListener("click", filtreringKategori);
             })
-             document.querySelectorAll("#argang-filtrering button").forEach(elm => {
+             document.querySelectorAll("#argang-filtrering div").forEach(elm => {
                 elm.addEventListener("click", filtreringArgang);
             })
         }
