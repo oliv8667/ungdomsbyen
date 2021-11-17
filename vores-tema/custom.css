@@ -58,10 +58,6 @@
 
 /********************************* SLUT *************************************/
 
-.elementor-widget-wrap elementor-element-populated {
-  display: none;
-}
-
 /*********** MOBILE **********/
 
 .titel,
@@ -125,6 +121,7 @@ article .beskrivelse,
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 5px;
+  margin-bottom: 5rem;
 }
 
 #artikel_single {
@@ -159,6 +156,10 @@ article .beskrivelse,
   padding-block: 5px;
 }
 
+.bookknap_single {
+  margin-bottom: 2rem;
+}
+
 .kursusknap {
   width: 94px;
 }
@@ -189,6 +190,10 @@ article .beskrivelse,
     font-size: 13px;
     font-family: "Montserrat", sans-serif;
     color: black;
+  }
+
+  .div_single {
+    padding-left: 2rem;
   }
 }
 

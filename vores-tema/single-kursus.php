@@ -25,7 +25,7 @@ get_header();
 
         <article id="artikel_single">
         <img class="pic_single" src="" alt="" />
-        <div>
+        <div class="div_single">
         <h2 class="titel_single"></h2>
         <p class="langbeskrivelse_single"></p>
         <p class="fag_single"></p>
