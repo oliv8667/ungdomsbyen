@@ -19,7 +19,7 @@ get_header();
 </head>
 
 	    <section id="primary" class="content-area">
-		<main id="main" class="site-main">
+		<main id="main-single" class="site-main">
 
         <button class="tilbageknap_single">Tilbage</button>
 
